@@ -51,9 +51,10 @@ export const useCareerStore = create<CareerStore>((set, get) => ({
     
     const { DEMO_PATHS } = require('@/data/demoPaths');
     
-    // In a real hardcoded version, we might want to "mock" the roles based on input,
-    // but for "quickly", we'll just return the high-quality demo paths.
-    set({ paths: DEMO_PATHS, isLoading: false });
+    // Select paths based on currentRole, fallback to Frontend Developer if not found
+    const selectedPaths = DEMO_PATHS[currentRole] || DEMO_PATHS['Frontend Developer'];
+    
+    set({ paths: selectedPaths, isLoading: false });
   },
   
   setSelectedNode: (node) => set({ selectedNode: node }),

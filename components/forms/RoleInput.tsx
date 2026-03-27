@@ -38,15 +38,24 @@ export function RoleInput() {
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 items-end">
           <div className="w-full space-y-2">
             <label htmlFor="currentRole" className="block text-sm font-medium text-slate-700">Current Role</label>
-            <input
+            <select
               id="currentRole"
-              type="text"
               value={current}
-              onChange={(e) => setCurrent(e.target.value)}
-              placeholder="e.g., Frontend Developer"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-slate-50/50"
+              onChange={(e) => {
+                setCurrent(e.target.value);
+                // Automatically set a sensible target role for the demo
+                if (e.target.value === 'Frontend Developer') setTarget('VP of Engineering');
+                if (e.target.value === 'Data Analyst') setTarget('Data Scientist');
+                if (e.target.value === 'Product Designer') setTarget('Product Manager');
+              }}
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-slate-50/50 appearance-none cursor-pointer"
               required
-            />
+            >
+              <option value="" disabled>Select your role</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Data Analyst">Data Analyst</option>
+              <option value="Product Designer">Product Designer</option>
+            </select>
           </div>
           
           <div className="hidden md:flex pb-3 text-slate-400">
@@ -63,6 +72,7 @@ export function RoleInput() {
               placeholder="e.g., VP of Engineering"
               className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-slate-50/50"
               required
+              readOnly
             />
           </div>
 
