@@ -47,6 +47,16 @@ export function RoleInput() {
                 if (e.target.value === 'Frontend Developer') setTarget('VP of Engineering');
                 if (e.target.value === 'Data Analyst') setTarget('Data Scientist');
                 if (e.target.value === 'Product Designer') setTarget('Product Manager');
+                if (e.target.value === 'Backend Developer') setTarget('CTO');
+                if (e.target.value === 'UX Researcher') setTarget('Head of Research');
+                if (e.target.value === 'DevOps Engineer') setTarget('SRE Manager');
+                if (e.target.value === 'Marketing Specialist') setTarget('CMO');
+                if (e.target.value === 'Sales Representative') setTarget('VP of Sales');
+                if (e.target.value === 'HR Coordinator') setTarget('Chief People Officer');
+                if (e.target.value === 'Financial Analyst') setTarget('CFO');
+                if (e.target.value === 'Customer Success Manager') setTarget('Head of Customer Success');
+                if (e.target.value === 'Content Writer') setTarget('Content Strategy Director');
+                if (e.target.value === 'Project Manager') setTarget('PMO Director');
               }}
               className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-slate-50/50 appearance-none cursor-pointer"
               required
@@ -55,6 +65,16 @@ export function RoleInput() {
               <option value="Frontend Developer">Frontend Developer</option>
               <option value="Data Analyst">Data Analyst</option>
               <option value="Product Designer">Product Designer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="UX Researcher">UX Researcher</option>
+              <option value="DevOps Engineer">DevOps Engineer</option>
+              <option value="Marketing Specialist">Marketing Specialist</option>
+              <option value="Sales Representative">Sales Representative</option>
+              <option value="HR Coordinator">HR Coordinator</option>
+              <option value="Financial Analyst">Financial Analyst</option>
+              <option value="Customer Success Manager">Customer Success Manager</option>
+              <option value="Content Writer">Content Writer</option>
+              <option value="Project Manager">Project Manager</option>
             </select>
           </div>
           
