@@ -22,26 +22,6 @@ declare global {
 
 export default function Home() {
   const { paths, error, isLoading } = useCareerStore();
-  const [hasKey, setHasKey] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const checkKey = async () => {
-      if (window.aistudio?.hasSelectedApiKey) {
-        const selected = await window.aistudio.hasSelectedApiKey();
-        setHasKey(selected);
-      } else {
-        setHasKey(true); // Fallback for environments without the selection API
-      }
-    };
-    checkKey();
-  }, []);
-
-  const handleSelectKey = async () => {
-    if (window.aistudio?.openSelectKey) {
-      await window.aistudio.openSelectKey();
-      setHasKey(true);
-    }
-  };
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans selection:bg-emerald-200 selection:text-emerald-900 relative overflow-hidden">
@@ -58,15 +38,6 @@ export default function Home() {
             </div>
             <span className="font-bold text-xl tracking-tight text-slate-800">Pathfinder</span>
           </div>
-          
-          {hasKey === false && (
-            <button
-              onClick={handleSelectKey}
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
-            >
-              Select API Key
-            </button>
-          )}
         </div>
       </header>
 

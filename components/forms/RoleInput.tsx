@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useCareerStore } from '@/store/useCareerStore';
-import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { AlertCircle, ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function RoleInput() {

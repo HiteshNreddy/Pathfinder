@@ -10,19 +10,21 @@ export async function POST(req: Request) {
     }
 
     // Use the platform-provided API key. 
-    // NEXT_PUBLIC_GEMINI_API_KEY is the standard for AI Studio Build.
-    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+    // AI Studio Build provides several possible environment variables.
+    const apiKey = process.env.API_KEY || 
+                   process.env.NEXT_PUBLIC_GEMINI_API_KEY || 
+                   process.env.GEMINI_API_KEY;
     
-    if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
+    if (!apiKey || apiKey === 'MY_GEMINI_API_KEY' || apiKey === 'MY_API_KEY') {
       return NextResponse.json({ 
-        error: 'Gemini API key is not configured. Please add it to your secrets.' 
+        error: 'Gemini API key is not configured. If you are in AI Studio, please click the "Select API Key" button in the header or configure it in the Settings > Secrets panel.' 
       }, { status: 500 });
     }
 
     const ai = new GoogleGenAI({ apiKey });
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-pro-preview',
+      model: 'gemini-3-flash-preview',
       contents: `You are a career progression strategist. Generate 2-3 realistic, actionable career paths from "${currentRole}" to "${targetRole}".
 
 Requirements:
